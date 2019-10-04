@@ -3,11 +3,12 @@ import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/modular/home/home_route.dart';
+import 'package:home_stay_project/ui/modular/room/widgets/room_item_widget.dart';
 
 
 class ListRoomPage extends StatelessWidget {
-  const ListRoomPage({Key key}) : super(key: key);
 
+  List<String> rooms = List.generate(12, (i) => "Room {i}");
   
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,17 @@ class ListRoomPage extends StatelessWidget {
               ),
               Expanded(
                 flex: 5,
-                child: Container(),
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 24),
+                  child: ListView.builder(
+                    itemCount: rooms.length,
+                    itemBuilder: (context,index){
+                      return Container(
+                        child: RoomItem(),
+                      );
+                    },
+                  ),
+                ),
               )
             ],
           ),
