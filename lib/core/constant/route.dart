@@ -8,6 +8,7 @@ import 'package:home_stay_project/ui/modular/authentication/pages/select_role_pa
 import 'package:home_stay_project/ui/modular/home/pages/home_page.dart';
 import 'package:home_stay_project/ui/modular/landing/pages/landing_page.dart';
 import 'package:home_stay_project/ui/modular/room/pages/list_room_page.dart';
+import 'package:home_stay_project/ui/modular/room/pages/room_detail_page.dart';
 
 Route<dynamic> route(RouteSettings settings){
   switch(settings.name){
@@ -27,5 +28,7 @@ Route<dynamic> route(RouteSettings settings){
     return MaterialPageRoute(builder: (_) => HomePage());
     case RouteName.ListRoomPage:
     return MaterialPageRoute(builder: (_) => ListRoomPage());
+    case RouteName.RoomDetailPage:
+    return MaterialPageRoute(builder: (_) => RoomDetailPage());
   }
 }

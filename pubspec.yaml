@@ -49,6 +49,9 @@ flutter:
    - assets/google_logo.png
    - assets/facebook_logo.png
    - assets/twitter_logo.png
+   - assets/hori_menu.png
+   - assets/dot_menu.png
+   - assets/search.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

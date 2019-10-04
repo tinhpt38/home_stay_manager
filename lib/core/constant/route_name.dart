@@ -10,4 +10,5 @@ class RouteName{
   static const CreateShedulePage = "CreateShedulePage";
   static const SettingPage = "SettingPage";
   static const CheckOutPage = "CheckOutPage";
+  static const RoomDetailPage  = "RoomDetailPage";
 }

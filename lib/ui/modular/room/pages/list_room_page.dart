@@ -3,6 +3,7 @@ import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/modular/home/home_route.dart';
+import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_item_widget.dart';
 
 
@@ -13,6 +14,7 @@ class ListRoomPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
+      widgetDidLoad: (){},
       model: NullablePageModel(),
       builder: (context, modle, child) => Scaffold(
         appBar: AppBar(
@@ -69,7 +71,11 @@ class ListRoomPage extends StatelessWidget {
                     itemCount: rooms.length,
                     itemBuilder: (context,index){
                       return Container(
-                        child: RoomItem(),
+                        child: RoomItem(
+                          onRoomClick: (title){
+                            RoomRoute.openRoomDetail(context);
+                          },
+                        ),
                       );
                     },
                   ),

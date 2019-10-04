@@ -12,7 +12,9 @@ class LandingPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return BaseWidget<LandingPageModel>(
       widgetDidLoad: (){
-        LandingRoute.openLoginPage(context);
+        Future.delayed(Duration(seconds: 3),(){
+          LandingRoute.openLoginPage(context);
+        });
       },
       builder: (context, model, child){
         return Scaffold(

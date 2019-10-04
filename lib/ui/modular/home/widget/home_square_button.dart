@@ -13,12 +13,12 @@ class HomeSquareButton extends StatelessWidget {
       flex: 1,
       child: AspectRatio(
         aspectRatio: 1,
-        child: Container(
-          margin: margin,
-          alignment: Alignment.center,
-          color: AppColor.secondaryColor,
-          child: GestureDetector(
-            onTap: onClick,
+        child: GestureDetector(
+          onTap: onClick,
+          child: Container(
+            margin: margin,
+            alignment: Alignment.center,
+            color: AppColor.secondaryColor,
             child: Text(
               title.toUpperCase(),
               style: TextStyle(
