@@ -7,8 +7,13 @@ import 'package:home_stay_project/ui/modular/authentication/pages/register_page.
 import 'package:home_stay_project/ui/modular/authentication/pages/select_role_page.dart';
 import 'package:home_stay_project/ui/modular/home/pages/home_page.dart';
 import 'package:home_stay_project/ui/modular/landing/pages/landing_page.dart';
+import 'package:home_stay_project/ui/modular/room/pages/check_in_page.dart';
+import 'package:home_stay_project/ui/modular/room/pages/check_out_page.dart';
 import 'package:home_stay_project/ui/modular/room/pages/list_room_page.dart';
+import 'package:home_stay_project/ui/modular/room/pages/payment_page.dart';
 import 'package:home_stay_project/ui/modular/room/pages/room_detail_page.dart';
+import 'package:home_stay_project/ui/modular/setting/pages/about_us_page.dart';
+import 'package:home_stay_project/ui/modular/setting/pages/setting_page.dart';
 
 Route<dynamic> route(RouteSettings settings){
   switch(settings.name){
@@ -30,5 +35,15 @@ Route<dynamic> route(RouteSettings settings){
     return MaterialPageRoute(builder: (_) => ListRoomPage());
     case RouteName.RoomDetailPage:
     return MaterialPageRoute(builder: (_) => RoomDetailPage());
+    case RouteName.CheckInPage:
+    return MaterialPageRoute(builder: (_) => CheckInPage());
+    case RouteName.CheckOutPage:
+    return MaterialPageRoute(builder: (_) => CheckOutPage());
+    case RouteName.PaymentPage:
+    return MaterialPageRoute(builder: (_) => PaymentPage());
+    case RouteName.SettingPage:
+    return MaterialPageRoute(builder: (_) => SettingPage());
+    case RouteName.AboutUsPage:
+    return MaterialPageRoute(builder: (_) => AboutUsPage());
   }
 }

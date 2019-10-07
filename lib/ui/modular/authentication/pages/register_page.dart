@@ -28,7 +28,7 @@ class ResgisterPage extends StatelessWidget {
             elevation: 0.0,
             centerTitle: true,
             title: Text(
-              "Register",
+              "Register".toUpperCase(),
               style: AppStyle.primaryNavigator
             ),
             leading: FlatButton(

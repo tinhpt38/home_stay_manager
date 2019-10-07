@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:home_stay_project/ui/common/app_colors.dart';
+
+
+class TextInput extends StatelessWidget {
+  
+  final String label;
+  final bool obscureText;
+  final String hinText;
+  final TextEditingController cotller;
+
+  TextInput({this.label, this.obscureText, this.hinText, this.cotller});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+            margin: EdgeInsets.symmetric(horizontal: 24,vertical: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  child: Text(
+                    label,
+                    style: TextStyle(color: AppColor.primaryColor,fontSize: 14)),
+                    ),
+                TextField(
+                  obscureText: obscureText,
+                  controller: cotller,
+                  decoration: InputDecoration(
+                    hintText: hinText,
+                    hintStyle: TextStyle(color: AppColor.primaryColor),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColor.primaryColor,width: 1),
+                      ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColor.primaryColor,width: 2),
+                      )
+                    ),
+                ),
+              ],
+            ),
+          );
+  }
+}

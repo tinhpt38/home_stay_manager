@@ -4,7 +4,7 @@ import 'package:home_stay_project/core/constant/route_name.dart';
 class HomeRoute{
   
   static void openCheckInPage(BuildContext context){
-
+    Navigator.pushNamed(context, RouteName.CheckInPage);
   }
 
   static void goBack(BuildContext context){

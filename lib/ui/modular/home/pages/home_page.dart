@@ -21,13 +21,14 @@ class HomePage extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Container(
+                  margin: EdgeInsets.only(top: 16),
                   child: InfoWidget(),
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: Container(
-                  child: Column(
+                  child: ListView(
                     children: <Widget>[
                       Row(
                         children: <Widget>[
@@ -35,7 +36,7 @@ class HomePage extends StatelessWidget {
                             title: "Check in",
                             margin: EdgeInsets.only(left: 16,right: 8,top: 8,bottom: 8),
                             onClick: (){
-
+                              HomeRoute.openCheckInPage(context);
                             },
                           ),
                            HomeSquareButton(
@@ -57,7 +58,9 @@ class HomePage extends StatelessWidget {
                            HomeSquareButton(
                             title: "Setting",
                             margin: EdgeInsets.only(right: 16,left: 8,bottom: 8,top: 8),
-                            onClick: (){},
+                            onClick: (){
+                              HomeRoute.openSettingPage(context);
+                            },
                           )
                         ],
                       ),

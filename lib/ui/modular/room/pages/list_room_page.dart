@@ -40,12 +40,12 @@ class ListRoomPage extends StatelessWidget {
                         margin: EdgeInsets.only(left: 32),
                         padding: EdgeInsets.all(24),
                         decoration: BoxDecoration(
-                          color: AppColor.borderColor,
+                          color: AppColor.primaryColor,
                           shape: BoxShape.circle
                         ),
                         child: Icon(
                           Icons.people,
-                          color: AppColor.primaryColor,
+                          color: Colors.white,
                         ),
                       ),
                       Container(

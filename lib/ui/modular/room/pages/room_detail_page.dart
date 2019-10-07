@@ -97,7 +97,11 @@ class RoomDetailPage extends StatelessWidget {
                   child: ListView.builder(
               itemCount: 10,
               itemBuilder: (context, index){
-                return RoomDetailItem();
+                return RoomDetailItem(
+                  onClick: (){
+                    RoomRoute.openCheckOutPage(context);
+                  },
+                );
               },
             ),
                 ),
@@ -154,7 +158,7 @@ class RoomDetailPage extends StatelessWidget {
                       ),
                       backgroundColor: AppColor.secondaryColor,
                       onClick: (){
-
+                          RoomRoute.openCheckInPage(context);
                       },
                     ),
                   ),

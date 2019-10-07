@@ -3,6 +3,7 @@ import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
+import 'package:home_stay_project/ui/common/text_input_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/login_action_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/select_button_widget.dart';
 
@@ -28,7 +29,7 @@ class AdminSetupPage extends StatelessWidget {
             elevation: 0.0,
             centerTitle: true,
             title: Text(
-              "Admin Setup",
+              "Admin Setup".toUpperCase(),
               style: AppStyle.primaryNavigator
             ),
             leading: FlatButton(
@@ -61,25 +62,25 @@ class AdminSetupPage extends StatelessWidget {
                          child: SingleChildScrollView(
                            child: Column(
                              children: <Widget>[
-                                buildTextField(
+                                TextInput(
                           label: "Your Homestay Name",
                           hinText: "PiLaka Homestay",
                           cotller: _nameCotller,
                           obscureText: false
                         ),
-                        buildTextField(
+                        TextInput(
                           label: "Sologan",
                           hinText: "PiLaka Happy",
                           cotller: _emailCotller,
                           obscureText: false
                         ),
-                        buildTextField(
+                        TextInput(
                           label: "Phone",
                           hinText: "",
                           cotller: _passCotller,
                           obscureText: false
                         ),
-                          buildTextField(
+                          TextInput(
                           label: "Number Room Of Homestay",
                           hinText: "",
                           cotller: _comfirmPassCotller,
@@ -109,31 +110,4 @@ class AdminSetupPage extends StatelessWidget {
     );
   }
 
-  Widget buildTextField({String label, String hinText, TextEditingController cotller, bool obscureText}){
-    return Container(
-            margin: EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: Text(
-                    label,
-                    style: TextStyle(color: AppColor.primaryColor,fontSize: 14)),
-                    ),
-                TextField(
-                  obscureText: obscureText,
-                  controller: cotller,
-                  decoration: InputDecoration(
-                    hintText: hinText,
-                    hintStyle: TextStyle(color: AppColor.primaryColor),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: AppColor.primaryColor,width: 1)
-                      )
-                    ),
-                ),
-              ],
-            ),
-          );
-  }
 }

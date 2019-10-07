@@ -23,7 +23,7 @@ class SelectRolePage extends StatelessWidget {
             elevation: 0.0,
             centerTitle: true,
             title: Text(
-              "Select Role",
+              "Select Role".toUpperCase(),
               style: AppStyle.primaryNavigator
             ),
             leading: FlatButton(

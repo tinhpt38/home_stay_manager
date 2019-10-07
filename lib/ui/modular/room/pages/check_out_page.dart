@@ -8,7 +8,7 @@ import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 import 'package:home_stay_project/ui/common/text_input_widget.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 
-class CheckInPage extends StatelessWidget {
+class CheckOutPage extends StatelessWidget {
   
   TextEditingController _fullNameCotller = TextEditingController();
   TextEditingController _idColler = TextEditingController();
@@ -18,6 +18,10 @@ class CheckInPage extends StatelessWidget {
   TextEditingController _roomColler = TextEditingController();
   TextEditingController _numberOfStayColler = TextEditingController();
   TextEditingController _priceColler = TextEditingController();
+  TextEditingController _foodsColler = TextEditingController();
+  TextEditingController _drinkColler = TextEditingController();
+  TextEditingController _motobikeColler = TextEditingController();
+  TextEditingController _infringeColler = TextEditingController();
 
 
   @override
@@ -29,7 +33,7 @@ class CheckInPage extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "Check In".toUpperCase(),
+            "Check Out".toUpperCase(),
             style: AppStyle.primaryNavigator,
           ),
           backgroundColor: Colors.white,
@@ -52,7 +56,7 @@ class CheckInPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 12),
                         child: Text(
-                        "Create an Check In",
+                        "Create an Check Out",
                         style: TextStyle(
                           fontSize: 24,
                           color: AppColor.primaryColor,
@@ -125,6 +129,30 @@ class CheckInPage extends StatelessWidget {
                         hinText: "3.000.000.VND",
                         obscureText: false,
                       ),
+                      TextInput(
+                        cotller: _foodsColler,
+                        label: "Foods",
+                        hinText: "100.000.VND",
+                        obscureText: false,
+                      ),
+                        TextInput(
+                        cotller: _drinkColler,
+                        label: "Drink",
+                        hinText: "90.000.VND",
+                        obscureText: false,
+                      ),
+                      TextInput(
+                        cotller: _motobikeColler,
+                        label: "Motobike",
+                        hinText: "300.000.VND",
+                        obscureText: false,
+                      ),
+                      TextInput(
+                        cotller: _infringeColler,
+                        label: "Infringe",
+                        hinText: "30.000.VND",
+                        obscureText: false,
+                      ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 32,horizontal: 24),
                         child: FullWidthButton(
@@ -136,7 +164,7 @@ class CheckInPage extends StatelessWidget {
                         ),
                         backgroundColor: AppColor.primaryColor,
                         onClick: (){
-
+                            RoomRoute.openPaymentPage(context);
                         },
                         ),
                       ),
