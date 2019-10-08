@@ -15,7 +15,6 @@ class SelectRolePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
-      widgetDidLoad: (){},
       builder: (context, model, child){
         return Scaffold(
           appBar: AppBar(

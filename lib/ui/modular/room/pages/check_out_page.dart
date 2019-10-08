@@ -27,7 +27,6 @@ class CheckOutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
-      widgetDidLoad: (){},
       model: NullablePageModel(),
       builder: (context, modle, child) => Scaffold(
         appBar: AppBar(

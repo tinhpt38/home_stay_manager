@@ -7,15 +7,31 @@ import 'package:home_stay_project/ui/common/app_style.dart';
 import 'package:home_stay_project/ui/common/info_widget.dart';
 import 'package:home_stay_project/ui/modular/setting/setting_route.dart';
 
-class AboutUsPage extends StatelessWidget {
+class AboutUsPage extends StatefulWidget {
   const AboutUsPage({Key key}) : super(key: key);
+
+  @override
+  _AboutUsPageState createState() => _AboutUsPageState();
+}
+
+class _AboutUsPageState extends State<AboutUsPage> {
+
+  double _width = 10;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      Future.delayed(Duration(seconds: 1),(){
+          setState(() => _width = MediaQuery.of(context).size.width - 64);
+      });
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
-      widgetDidLoad: (){
-        
-      },
       model: NullablePageModel(),
       builder: (context, model, child){
         return Scaffold(
@@ -35,6 +51,7 @@ class AboutUsPage extends StatelessWidget {
           ),
         ),
         body: Container(
+          width: double.infinity,
           color: Colors.white,
           child: Column(
             children: <Widget>[
@@ -49,33 +66,13 @@ class AboutUsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 24),
-                child: Column(
-                  children: <Widget>[
-                    InfoWidget(),
-                    Container(
-                      width: double.infinity,
-                      height: 2,
-                      color: AppColor.primaryColor,
-                      margin: EdgeInsets.symmetric(horizontal: 24,vertical: 16),
-                    )
-                  ],
-                ),
+              buildAboutItem(
+                name: "Phan Trung Tinh",
+                profile: "Flutter Developer"
               ),
-               Container(
-                margin: EdgeInsets.symmetric(vertical: 24),
-                child: Column(
-                  children: <Widget>[
-                    InfoWidget(),
-                    Container(
-                      width: double.infinity,
-                      height: 2,
-                      color: AppColor.primaryColor,
-                      margin: EdgeInsets.symmetric(horizontal: 24,vertical: 16),
-                    )
-                  ],
-                ),
+              buildAboutItem(
+                name: "Tran Trong Hiep",
+                profile: "Backend Developer"
               ),
             ],
           ),
@@ -83,5 +80,26 @@ class AboutUsPage extends StatelessWidget {
         );
       },
     );
+  }
+
+  Widget buildAboutItem({String name, String profile}){
+    return Container(
+            margin: EdgeInsets.symmetric(vertical: 24),
+            child: Column(
+              children: <Widget>[
+                InfoWidget(
+                  name: name,
+                  profile: profile,
+                ),
+                AnimatedContainer(
+                duration: Duration(seconds: 2),
+                width: _width,
+                height: 2,
+                color: AppColor.primaryColor,
+                margin: EdgeInsets.symmetric(horizontal: 24,vertical: 16),
+                )
+              ],
+            ),
+          );
   }
 }

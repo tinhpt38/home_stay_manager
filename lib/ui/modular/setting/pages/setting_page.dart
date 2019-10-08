@@ -60,7 +60,10 @@ class SettingPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Container(
-                  child: InfoWidget(),
+                  child: InfoWidget(
+                    name: "Homestay Len 1646",
+                    profile: "My homestay is very good, clean, good",
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 8),

@@ -16,7 +16,6 @@ class PaymentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
       model: NullablePageModel(),
-      widgetDidLoad: (){},
       builder: (context, model, chil){
         return Scaffold(
           appBar: AppBar(

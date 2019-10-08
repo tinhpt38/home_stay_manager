@@ -17,9 +17,6 @@ class LoginPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return BaseWidget<LoginPageModel>(
       model: LoginPageModel(),
-      widgetDidLoad:(){
-
-      },
       builder: (context, model, child){
         return Scaffold(
           resizeToAvoidBottomPadding: false,

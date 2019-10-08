@@ -6,9 +6,8 @@ class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
   final Widget Function(BuildContext context, T value, Widget child) builder;
   final T model;
   final Widget child;
-  final VoidCallback widgetDidLoad;
 
-  BaseWidget({this.builder, this.child, this.model, this.widgetDidLoad});
+  BaseWidget({this.builder, this.child, this.model});
 
   _BaseWidgetState<T> createState() => _BaseWidgetState();
 }
@@ -21,9 +20,6 @@ class _BaseWidgetState<T extends ChangeNotifier> extends State<BaseWidget<T>> {
   void initState() {
     model = widget.model;
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((d){
-      widget.widgetDidLoad();
-    });
   }
 
   @override

@@ -5,4 +5,8 @@ class LandingRoute {
   static void openLoginPage(BuildContext context){
     Navigator.pushReplacementNamed(context, RouteName.LoginPage);
   }
+
+  static void openHomePage(BuildContext context){
+    Navigator.pushReplacementNamed(context, RouteName.HomePage);
+  }
 }

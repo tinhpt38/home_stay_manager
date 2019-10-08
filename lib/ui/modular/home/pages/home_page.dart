@@ -12,64 +12,69 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
-      widgetDidLoad: (){},
       model: NullablePageModel(),
       builder: (context, model, child) => Scaffold(
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: Container(
-                  margin: EdgeInsets.only(top: 16),
-                  child: InfoWidget(),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  child: ListView(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          HomeSquareButton(
-                            title: "Check in",
-                            margin: EdgeInsets.only(left: 16,right: 8,top: 8,bottom: 8),
-                            onClick: (){
-                              HomeRoute.openCheckInPage(context);
-                            },
-                          ),
-                           HomeSquareButton(
-                            title: "List Room",
-                            margin: EdgeInsets.only(right: 16,left: 8,top: 8,bottom: 8),
-                            onClick: (){
-                              HomeRoute.openListRoomPage(context);
-                            },
-                          )
-                        ],
-                      ),
-                        Row(
-                        children: <Widget>[
-                          HomeSquareButton(
-                            title: "Create Schedule House Kepping",
-                            margin: EdgeInsets.only(left: 16,right: 8,bottom: 8,top: 8),
-                            onClick: (){},
-                          ),
-                           HomeSquareButton(
-                            title: "Setting",
-                            margin: EdgeInsets.only(right: 16,left: 8,bottom: 8,top: 8),
-                            onClick: (){
-                              HomeRoute.openSettingPage(context);
-                            },
-                          )
-                        ],
-                      ),
-                    ],
+        body: Hero(
+          tag: 'dash',
+            child: Container(
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    margin: EdgeInsets.only(top: 16),
+                    child: InfoWidget(
+                      name: "Homestay Len 1646",
+                      profile: "Best Home Stay For You",
+                    ),
                   ),
                 ),
-              ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    child: ListView(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            HomeSquareButton(
+                              title: "Check in",
+                              margin: EdgeInsets.only(left: 16,right: 8,top: 8,bottom: 8),
+                              onClick: (){
+                                HomeRoute.openCheckInPage(context);
+                              },
+                            ),
+                             HomeSquareButton(
+                              title: "List Room",
+                              margin: EdgeInsets.only(right: 16,left: 8,top: 8,bottom: 8),
+                              onClick: (){
+                                HomeRoute.openListRoomPage(context);
+                              },
+                            )
+                          ],
+                        ),
+                          Row(
+                          children: <Widget>[
+                            HomeSquareButton(
+                              title: "Create Schedule House Kepping",
+                              margin: EdgeInsets.only(left: 16,right: 8,bottom: 8,top: 8),
+                              onClick: (){},
+                            ),
+                             HomeSquareButton(
+                              title: "Setting",
+                              margin: EdgeInsets.only(right: 16,left: 8,bottom: 8,top: 8),
+                              onClick: (){
+                                HomeRoute.openSettingPage(context);
+                              },
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
 
-            ],
+              ],
+            ),
           ),
         ),
       ),
