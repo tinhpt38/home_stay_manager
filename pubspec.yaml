@@ -52,6 +52,10 @@ flutter:
    - assets/hori_menu.png
    - assets/dot_menu.png
    - assets/search.png
+   - assets/bad.png
+   - assets/happiness.png
+   - assets/medium.png
+   - assets/happy.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

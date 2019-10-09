@@ -95,7 +95,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
                 duration: Duration(seconds: 2),
                 width: _width,
                 height: 2,
-                color: AppColor.primaryColor,
+                color: AppColor.lineColor,
                 margin: EdgeInsets.symmetric(horizontal: 24,vertical: 16),
                 )
               ],

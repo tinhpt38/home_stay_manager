@@ -11,6 +11,7 @@ import 'package:home_stay_project/ui/modular/room/pages/check_in_page.dart';
 import 'package:home_stay_project/ui/modular/room/pages/check_out_page.dart';
 import 'package:home_stay_project/ui/modular/room/pages/list_room_page.dart';
 import 'package:home_stay_project/ui/modular/room/pages/payment_page.dart';
+import 'package:home_stay_project/ui/modular/room/pages/rating_page.dart';
 import 'package:home_stay_project/ui/modular/room/pages/room_detail_page.dart';
 import 'package:home_stay_project/ui/modular/setting/pages/about_us_page.dart';
 import 'package:home_stay_project/ui/modular/setting/pages/setting_page.dart';
@@ -45,5 +46,7 @@ Route<dynamic> route(RouteSettings settings){
     return MaterialPageRoute(builder: (_) => SettingPage());
     case RouteName.AboutUsPage:
     return MaterialPageRoute(builder: (_) => AboutUsPage());
+    case RouteName.RatingPage:
+    return MaterialPageRoute(builder: (_) => RatingPage());
   }
 }

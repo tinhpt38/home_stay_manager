@@ -7,10 +7,28 @@ import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_item_widget.dart';
 
 
-class ListRoomPage extends StatelessWidget {
+class ListRoomPage extends StatefulWidget {
 
+  @override
+  _ListRoomPageState createState() => _ListRoomPageState();
+}
+
+class _ListRoomPageState extends State<ListRoomPage> {
   List<String> rooms = List.generate(12, (i) => "Room {i}");
+
+  Alignment _alignment  = Alignment.bottomCenter;
   
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){
+      setState(() {
+        _alignment = Alignment.center;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
@@ -31,8 +49,10 @@ class ListRoomPage extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                child: Container(
+                child: AnimatedContainer(
+                  duration: Duration(seconds: 2),
                   color: AppColor.secondaryColor,
+                  alignment: _alignment,
                   child: Row(
                    children: <Widget>[
                       Container(
@@ -48,7 +68,7 @@ class ListRoomPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                         margin: EdgeInsets.only(left: 32),
+                        margin: EdgeInsets.only(left: 32),
                         child: Text(
                           "List Room",
                           style: TextStyle(

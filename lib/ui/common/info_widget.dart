@@ -15,12 +15,18 @@ class InfoWidget extends StatefulWidget {
 class _InfoWidgetState extends State<InfoWidget> {
 
   double _opacity = 0;
+  Radius _radius = Radius.circular(0);
+  double _padding = 0;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_){
-      setState(() => _opacity = 1);
+      setState(() {
+        _opacity = 1;
+        _radius = Radius.circular(90);
+        _padding = 32;
+      });
     });
   }
 
@@ -32,15 +38,16 @@ class _InfoWidgetState extends State<InfoWidget> {
       duration: Duration(seconds: 3),
       child: Column(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(32),
+          AnimatedContainer(
+            duration: Duration(seconds: 2),
+            padding: EdgeInsets.all(_padding),
             decoration: BoxDecoration(
               color: AppColor.borderColor,
-              shape: BoxShape.circle
+              borderRadius: BorderRadius.all(_radius),
             ),
             child: Icon(
               Icons.people,
-              color: AppColor.primaryColor,
+              color: Colors.white,
               size: 48,
             ),
           ),
@@ -62,7 +69,7 @@ class _InfoWidgetState extends State<InfoWidget> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: AppColor.borderColor,
+                color: Colors.blue[400]
               ),
               textAlign: TextAlign.center,
             ),

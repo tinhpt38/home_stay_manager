@@ -9,6 +9,9 @@ import 'package:home_stay_project/ui/modular/room/widgets/room_detail_item_widge
 
 class RoomDetailPage extends StatelessWidget {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  TextEditingController _historyCotler = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return BaseWidget<NullablePageModel>(
@@ -57,38 +60,27 @@ class RoomDetailPage extends StatelessWidget {
                     color: AppColor.secondaryColor,
                     borderRadius: BorderRadius.all(Radius.circular(8))
                   ),
-                  child: Row(
-                    children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: SizedBox(
-                      width: 28,
-                      height: 28,
-                      child: Image.asset("assets/search.png"),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 8,
-                      child: Container(
-                      child: TextField(
-                        style: TextStyle(
-                             color: AppColor.primaryColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold
-                          ),
-                        decoration: InputDecoration(
-                          hintText: "History",
-                          hintStyle: TextStyle(
-                            color: AppColor.primaryColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold
-                          ),
-                          border: InputBorder.none,
-                        ),
+                  child: TextField(
+                    controller: _historyCotler,
+                    style: TextStyle(
+                         color: AppColor.primaryColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
                       ),
+                    decoration: InputDecoration(
+                      icon: SizedBox(
+                        width: 28,
+                        height: 28,
+                        child: Image.asset("assets/search.png"),
+                      ),
+                      hintText: "History",
+                      hintStyle: TextStyle(
+                        color: AppColor.primaryColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),
+                      border: InputBorder.none,
                     ),
-                  ),
-                    ],
                   )
                 ),
                 Expanded(

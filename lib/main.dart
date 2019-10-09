@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: "Home Stay Manager",
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteName.LandingPage,
+        initialRoute: RouteName.RatingPage,
         onGenerateRoute: route,
       ),
     );

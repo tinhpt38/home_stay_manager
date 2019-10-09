@@ -135,7 +135,7 @@ class PaymentPage extends StatelessWidget {
                   ),
                   backgroundColor: AppColor.primaryColor,
                   onClick: (){
-
+                    RoomRoute.openRatingPage(context);
                   },
                 ),
               ),

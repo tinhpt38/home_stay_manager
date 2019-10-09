@@ -23,4 +23,8 @@ class RoomRoute{
   static void openPaymentPage(BuildContext context){
     Navigator.pushNamed(context, RouteName.PaymentPage);
   }
+
+  static void openRatingPage(BuildContext context){
+    Navigator.pushNamed(context, RouteName.RatingPage);
+  }
 }

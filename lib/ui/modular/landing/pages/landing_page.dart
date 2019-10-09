@@ -29,8 +29,8 @@ class _LandingPageState extends State<LandingPage> {
         _aligment = Alignment.center;
       });
    Future.delayed(Duration(seconds: 2),(){
-          // LandingRoute.openLoginPage(context);
-          LandingRoute.openHomePage(context);
+          LandingRoute.openLoginPage(context);
+          // LandingRoute.openHomePage(context);
         });
     });
   }

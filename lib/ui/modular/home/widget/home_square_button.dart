@@ -36,7 +36,7 @@ class _HomeSquareButtonState extends State<HomeSquareButton> {
         child: GestureDetector(
           onTap: widget.onClick,
           child: AnimatedContainer(
-            duration: Duration(seconds: 1),
+            duration: Duration(seconds: 2),
             margin: widget.margin,
             alignment: _alignment,
             color: AppColor.secondaryColor,

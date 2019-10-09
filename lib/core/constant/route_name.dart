@@ -13,4 +13,5 @@ class RouteName{
   static const RoomDetailPage  = "RoomDetailPage";
   static const PaymentPage = "PaymentPage";
   static const AboutUsPage = "AboutUsPage";
+  static const RatingPage = "RatingPage";
 }
