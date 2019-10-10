@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
-import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
+import 'package:home_stay_project/ui/modular/authentication/pages_model/register_page_model.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/login_action_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/select_button_widget.dart';
 import '../auth_route.dart';
@@ -19,7 +19,8 @@ class ResgisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
+    return BaseWidget<RegisterPageModel>(
+      model: RegisterPageModel(),
       builder: (context, model, child){
         return Scaffold(
           resizeToAvoidBottomPadding: false,

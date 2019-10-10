@@ -4,6 +4,7 @@ import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
 import 'package:home_stay_project/ui/common/text_input_widget.dart';
+import 'package:home_stay_project/ui/modular/authentication/pages_model/admin_setup_page_model.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/login_action_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/select_button_widget.dart';
 
@@ -20,7 +21,8 @@ class AdminSetupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
+    return BaseWidget<AdminSetupPageModel>(
+      model: AdminSetupPageModel(),
       builder: (context, model, child){
         return Scaffold(
           resizeToAvoidBottomPadding: false,

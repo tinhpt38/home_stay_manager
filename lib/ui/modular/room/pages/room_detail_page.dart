@@ -4,6 +4,7 @@ import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
+import 'package:home_stay_project/ui/modular/room/pages_model/room_detail_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_detail_item_widget.dart';
 
@@ -14,8 +15,8 @@ class RoomDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
-      model: NullablePageModel(),
+    return BaseWidget<RoomDetailPageModel>(
+      model: RoomDetailPageModel(),
       builder: (context, model, chil){
         return Scaffold(
           key: _scaffoldKey,

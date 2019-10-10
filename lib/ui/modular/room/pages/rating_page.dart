@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
+import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 
 import '../room_route.dart';
 
@@ -12,13 +15,16 @@ class RatingPage extends StatefulWidget {
   _RatingPageState createState() => _RatingPageState();
 }
 
-class _RatingPageState extends State<RatingPage> {
+class _RatingPageState extends State<RatingPage> with TickerProviderStateMixin{
+  AnimationController _animationController;
+  Animation _animation;
 
   double _values = 0;
 
-  Image _image;
+  AssetImage _image = AssetImage("assets/happy.png");
+  double _opacity = 1;
 
-  List<Image> _images = List();
+  List<AssetImage> _images = List();
 
   onSliderChange(double value){
    setState(() {
@@ -38,12 +44,26 @@ class _RatingPageState extends State<RatingPage> {
 
   @override
   void initState() {
-    _images.add(Image.asset("assets/bad.png"));
-    _images.add(Image.asset("assets/medium.png"));
-    _images.add(Image.asset("assets/happiness.png"));
-    _images.add(Image.asset("assets/happy.png"));
-    _image = _images[0];
+    _images.add(AssetImage("assets/bad.png"));
+    _images.add(AssetImage("assets/medium.png"));
+    _images.add(AssetImage("assets/happiness.png"));
+    _images.add(AssetImage("assets/happy.png"));
+    _image = _images[_images.length -1];
     super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 1200)
+    );
+
+    _animation =
+        Tween(begin: 10.0,end: 14.0).animate(_animationController);
+    
+     _animation.addStatusListener((AnimationStatus status) {
+      if (status == AnimationStatus.completed) {
+        _animationController.repeat();
+      }
+    });
+    
   }
 
   @override
@@ -71,21 +91,51 @@ class _RatingPageState extends State<RatingPage> {
         body: Container(
           child: Column(
             children: <Widget>[
-             SizedBox(
-               width: size.width * (1/3),
-               height: size.width * (1/3),
-               child:  AnimatedContainer(
-                duration: Duration(seconds: 3),
-                child: _image,
-              ),
+             Expanded(
+               flex: 4,
+                child: AnimatedBuilder(
+                 animation: _animationController,
+                 builder: (context, child){
+                   return Transform.scale(
+                     scale: _animation.value,
+                      child: Container(
+                       child: ImageIcon(
+                       _image,
+                         size: _animation.value,
+                         color: AppColor.primaryColor,
+                       )
+                     ),
+                   );
+                 }
+                ),
              ),
-              Slider(
-                value: _values,
-                min: 0,
-                max: 100,
-                onChanged: onSliderChange,
-                activeColor: AppColor.primaryColor,
-                inactiveColor: AppColor.primaryColor,
+              Expanded(
+                flex: 3,
+                child: Slider(
+                  value: _values,
+                  min: 0,
+                  max: 100,
+                  onChanged: (value){
+                  _animationController.forward();
+                  onSliderChange(value);
+                  },
+                  activeColor: AppColor.primaryColor,
+                  inactiveColor: AppColor.primaryColor,
+                ),
+              ),
+              Container(
+                child: FullWidthButton(
+                  title: "Done".toUpperCase(),
+                  titleStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold
+                  ),
+                  backgroundColor: AppColor.primaryColor,
+                  onClick: (){
+
+                  },
+                ),
               ),
             ],
           ),

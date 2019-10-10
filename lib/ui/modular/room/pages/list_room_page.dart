@@ -3,6 +3,7 @@ import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/modular/home/home_route.dart';
+import 'package:home_stay_project/ui/modular/room/pages_model/list_room_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_item_widget.dart';
 
@@ -31,8 +32,8 @@ class _ListRoomPageState extends State<ListRoomPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
-      model: NullablePageModel(),
+    return BaseWidget<ListRoomPageModel>(
+      model: ListRoomPageModel(),
       builder: (context, modle, child) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,

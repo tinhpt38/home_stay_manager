@@ -6,6 +6,7 @@ import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 import 'package:home_stay_project/ui/common/info_widget.dart';
+import 'package:home_stay_project/ui/modular/setting/pages_model/setting_page_model.dart';
 import 'package:home_stay_project/ui/modular/setting/setting_route.dart';
 
 
@@ -14,8 +15,8 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
-      model: NullablePageModel(),
+    return BaseWidget<SettingPageModel>(
+      model: SettingPageModel(),
       builder: (context, model, child){
         return Scaffold(
           appBar: AppBar(

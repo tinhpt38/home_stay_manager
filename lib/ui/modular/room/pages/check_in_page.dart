@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
-import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 import 'package:home_stay_project/ui/common/text_input_widget.dart';
+import 'package:home_stay_project/ui/modular/room/pages_model/checkin_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
-
+import 'package:home_stay_project/ui/modular/room/pages_model/checkin_page_model.dart';
 class CheckInPage extends StatelessWidget {
   
   TextEditingController _fullNameCotller = TextEditingController();
@@ -22,8 +22,8 @@ class CheckInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
-      model: NullablePageModel(),
+    return BaseWidget<CheckInPageModel>(
+      model: CheckInPageModel(),
       builder: (context, modle, child) => Scaffold(
         appBar: AppBar(
           centerTitle: true,

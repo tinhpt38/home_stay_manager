@@ -3,6 +3,7 @@ import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/info_widget.dart';
 import 'package:home_stay_project/ui/modular/home/home_route.dart';
+import 'package:home_stay_project/ui/modular/home/pages_model/home_page_model.dart';
 import 'package:home_stay_project/ui/modular/home/widget/home_square_button.dart';
 
 
@@ -11,8 +12,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
-      model: NullablePageModel(),
+    return BaseWidget<HomePageModel>(
+      model: HomePageModel(),
       builder: (context, model, child) => Scaffold(
         body: Container(
         child: Column(

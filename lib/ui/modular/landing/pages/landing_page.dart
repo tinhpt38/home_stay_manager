@@ -39,6 +39,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BaseWidget<LandingPageModel>(
+      model: LandingPageModel(),
       builder: (context, model, child){
         return Scaffold(
           body: Container(

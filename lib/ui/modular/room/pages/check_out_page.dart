@@ -6,6 +6,7 @@ import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 import 'package:home_stay_project/ui/common/text_input_widget.dart';
+import 'package:home_stay_project/ui/modular/room/pages_model/check_out_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 
 class CheckOutPage extends StatelessWidget {
@@ -26,8 +27,8 @@ class CheckOutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<NullablePageModel>(
-      model: NullablePageModel(),
+    return BaseWidget<CheckOutPageModel>(
+      model: CheckOutPageModel(),
       builder: (context, modle, child) => Scaffold(
         appBar: AppBar(
           centerTitle: true,
