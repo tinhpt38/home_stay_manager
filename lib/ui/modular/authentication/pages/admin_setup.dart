@@ -1,23 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:home_stay_project/core/model/staff.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
-import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
-import 'package:home_stay_project/ui/common/text_input_widget.dart';
+import 'package:home_stay_project/ui/common/app_text_input_widget.dart';
+import 'package:home_stay_project/ui/common/bottom_error.dart';
 import 'package:home_stay_project/ui/modular/authentication/pages_model/admin_setup_page_model.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/login_action_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/select_button_widget.dart';
+import 'package:keyboard_avoider/keyboard_avoider.dart';
 
 import '../auth_route.dart';
 
 
 class AdminSetupPage extends StatelessWidget {
-  final String role;
+  final Staff staff;
    TextEditingController _nameCotller = TextEditingController();
-  TextEditingController _emailCotller = TextEditingController();
-  TextEditingController _passCotller = TextEditingController();
-  TextEditingController _comfirmPassCotller = TextEditingController();
-  AdminSetupPage({this.role});
+  TextEditingController _sologanCotller = TextEditingController();
+  TextEditingController _phoneCotller = TextEditingController();
+  TextEditingController _numberRoomColler = TextEditingController();
+  AdminSetupPage({this.staff});
+
+
+  bool fillInField(BuildContext context){
+    if(_nameCotller.text.isEmpty){
+      BottomError.showError(context, "Your homestay name is empty!");
+      return false;
+    }
+    if(_sologanCotller.text.isEmpty){
+      BottomError.showError(context, "Your homestay email is empty!");
+      return false;
+    }
+    if(_phoneCotller.text.isEmpty){
+      BottomError.showError(context, "Your homestay phone is empty!");
+      return false;
+    }
+     if(_numberRoomColler.text.isEmpty){
+      BottomError.showError(context, "Your room number of homestay is empty!");
+      return false;
+    }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,39 +78,39 @@ class AdminSetupPage extends StatelessWidget {
                       children: <Widget>[
                         Container(
                           child: SelectButton(
-                            title: role,
+                            title: staff.role,
                             isSelected: false,
                             onSelected: (title){},
                           ),
                         ),
                        Expanded(
-                         child: SingleChildScrollView(
-                           child: Column(
+                         child: KeyboardAvoider(
+                           autoScroll: true,
+                           child: ListView(
+                             controller: ScrollController(),
+                             physics: BouncingScrollPhysics(),
                              children: <Widget>[
-                                TextInput(
+                                AppInputWidget(
                           label: "Your Homestay Name",
-                          hinText: "PiLaka Homestay",
+                          hinText: "Example Homestay",
                           cotller: _nameCotller,
-                          obscureText: false
                         ),
-                        TextInput(
+                        AppInputWidget(
                           label: "Sologan",
-                          hinText: "PiLaka Happy",
-                          cotller: _emailCotller,
-                          obscureText: false
+                          hinText: "Example sologan",
+                          cotller: _sologanCotller,
                         ),
-                        TextInput(
+                        AppInputWidget(
                           label: "Phone",
-                          hinText: "",
-                          cotller: _passCotller,
-                          obscureText: false
+                          cotller: _phoneCotller,
+                          inputType: TextInputType.number,
                         ),
-                          TextInput(
+                          AppInputWidget(
                           label: "Number Room Of Homestay",
-                          hinText: "",
-                          cotller: _comfirmPassCotller,
-                          obscureText: false
-                        )
+                          cotller: _numberRoomColler,
+                          inputType: TextInputType.number,
+                        ),
+
                              ],
                            ),
                          ),
@@ -100,7 +123,17 @@ class AdminSetupPage extends StatelessWidget {
                   flex: 2,
                   child: AuthAction(
                     onContinueClick: (){
-                      AuthenticationRoute.openHomePage(context);
+                      if(fillInField(context)){
+                        AuthenticationRoute.openHomePage(
+                          context,
+                          model.createNewHomeStay(
+                            _nameCotller.text.trim(), 
+                            _sologanCotller.text.trim(),
+                            null, 
+                            int.parse(_numberRoomColler.text),
+                            _phoneCotller.text,
+                            staff.email));
+                      }
                     },
                   ),
                 ),
@@ -111,5 +144,7 @@ class AdminSetupPage extends StatelessWidget {
       },
     );
   }
+
+
 
 }

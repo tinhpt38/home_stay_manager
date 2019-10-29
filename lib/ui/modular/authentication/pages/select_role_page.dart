@@ -3,6 +3,7 @@ import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
+import 'package:home_stay_project/ui/common/bottom_error.dart';
 import 'package:home_stay_project/ui/modular/authentication/auth_route.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/group_select_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/widgets/login_action_widget.dart';
@@ -11,6 +12,8 @@ import 'package:home_stay_project/ui/modular/authentication/widgets/login_action
 class SelectRolePage extends StatelessWidget {
 
   String _role = "";
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,12 @@ class SelectRolePage extends StatelessWidget {
                   child: Container(
                     child: AuthAction(
                       onContinueClick: (){
-                        AuthenticationRoute.openRegisterPage(context, _role);
+                        if(_role.isEmpty){
+                            BottomError.showError(context,"You have select one role for your account");
+                        }else{
+                          AuthenticationRoute.openRegisterPage(context, _role);
+                        }
+                        
                     },),
                   ),
                 ),

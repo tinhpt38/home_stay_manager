@@ -2,15 +2,17 @@
 
 class Room {
   String title;
-  List<Log> logs;
+  List<Detail> details;
   RoomState state;
+
+  Room({this.title, this.details, this.state});
 
   // Room.fromJson(Map<String, dynamic> json) => _$RoomFromJson(json);  
   // Map<String,dynamic> toJson() => _$RoomToJson(json);
 }
 
 
-class Log{
+class Detail{
   String log;
 
 }

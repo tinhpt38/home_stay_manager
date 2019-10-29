@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
-import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
+import 'package:home_stay_project/ui/common/app_text_input_widget.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
-import 'package:home_stay_project/ui/common/text_input_widget.dart';
 import 'package:home_stay_project/ui/modular/room/pages_model/check_out_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 
@@ -81,73 +80,73 @@ class CheckOutPage extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 26),
                   child: ListView(
                     children: <Widget>[
-                      TextInput(
+                      AppInputWidget(
                         cotller: _fullNameCotller,
                         label: "Full Name",
                         hinText: "Join Doe",
                         obscureText: false,
                       ),
-                      TextInput(
+                      AppInputWidget(
                         cotller: _idColler,
                         label: "ID",
                         hinText: "235945784",
                         obscureText: false,
                       ),
-                        TextInput(
+                        AppInputWidget(
                         cotller: _phoneColler,
                         label: "Phone Number",
                         hinText: "0352974899",
                         obscureText: false,
                       ),
-                        TextInput(
+                        AppInputWidget(
                         cotller: _dateStayColler,
                         label: "Date Stay",
                         hinText: "29/10/2019",
                         obscureText: false,
                       ),
-                        TextInput(
+                        AppInputWidget(
                         cotller: _dateLeaveColler,
                         label: "Date Leave",
                         hinText: "30/10/2019",
                         obscureText: false,
                       ),
-                        TextInput(
+                        AppInputWidget(
                         cotller: _roomColler,
                         label: "Room",
                         hinText: "Room 1",
                         obscureText: false,
                       ),
-                        TextInput(
+                        AppInputWidget(
                         cotller: _numberOfStayColler,
                         label: "Number of Stay",
                         hinText: "4",
                         obscureText: false,
                       ),
-                        TextInput(
+                        AppInputWidget(
                         cotller: _priceColler,
                         label: "Price",
                         hinText: "3.000.000.VND",
                         obscureText: false,
                       ),
-                      TextInput(
+                      AppInputWidget(
                         cotller: _foodsColler,
                         label: "Foods",
                         hinText: "100.000.VND",
                         obscureText: false,
                       ),
-                        TextInput(
+                        AppInputWidget(
                         cotller: _drinkColler,
                         label: "Drink",
                         hinText: "90.000.VND",
                         obscureText: false,
                       ),
-                      TextInput(
+                      AppInputWidget(
                         cotller: _motobikeColler,
                         label: "Motobike",
                         hinText: "300.000.VND",
                         obscureText: false,
                       ),
-                      TextInput(
+                      AppInputWidget(
                         cotller: _infringeColler,
                         label: "Infringe",
                         hinText: "30.000.VND",

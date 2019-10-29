@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
+import 'package:home_stay_project/ui/common/bottom_error.dart';
 import 'package:home_stay_project/ui/common/circle_icon_button.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/auth_route.dart';
@@ -9,6 +10,11 @@ class AuthAction extends StatelessWidget {
   final VoidCallback onContinueClick;
 
   AuthAction({this.onContinueClick});
+
+
+  void onAnotherLoginClick(BuildContext context){
+    BottomError.showError(context, "The feature does not ready yet!");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +41,15 @@ class AuthAction extends StatelessWidget {
               children: <Widget>[
                 CircleIconButton(
                   asset: "assets/facebook_logo.png",
-                  onClick: (){},
+                  onClick: () => onAnotherLoginClick(context),
                 ),
                 CircleIconButton(
                   asset: "assets/google_logo.png",
-                  onClick: (){},
+                  onClick: ()=> onAnotherLoginClick(context),
                 ),
                 CircleIconButton(
                   asset: "assets/twitter_logo.png",
-                  onClick: (){},
+                  onClick: () => onAnotherLoginClick(context),
                 )
               ],
             ),

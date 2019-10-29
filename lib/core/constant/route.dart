@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:home_stay_project/core/constant/route_name.dart';
+import 'package:home_stay_project/core/model/homestay.dart';
+import 'package:home_stay_project/core/model/staff.dart';
 import 'package:home_stay_project/ui/modular/authentication/pages/admin_setup.dart';
 import 'package:home_stay_project/ui/modular/authentication/pages/login_page.dart';
 import 'package:home_stay_project/ui/modular/authentication/pages/register_page.dart';
@@ -16,7 +18,7 @@ import 'package:home_stay_project/ui/modular/room/pages/room_detail_page.dart';
 import 'package:home_stay_project/ui/modular/setting/pages/about_us_page.dart';
 import 'package:home_stay_project/ui/modular/setting/pages/setting_page.dart';
 
-Route<dynamic> route(RouteSettings settings){
+Route route(RouteSettings settings){
   switch(settings.name){
     case RouteName.LandingPage:
     return MaterialPageRoute(builder: (_) => LandingPage());
@@ -28,10 +30,11 @@ Route<dynamic> route(RouteSettings settings){
     String role = settings.arguments as String;
     return MaterialPageRoute(builder: (_) => ResgisterPage(role: role));
     case RouteName.AdminSetupPage:
-    String role = settings.arguments as String;
-    return MaterialPageRoute(builder: (_) => AdminSetupPage(role: role));
+    Staff staff = settings.arguments as Staff;
+    return MaterialPageRoute(builder: (_) => AdminSetupPage(staff: staff,));
     case RouteName.HomePage:
-    return MaterialPageRoute(builder: (_) => HomePage());
+    Homestay home = settings.arguments as Homestay;
+    return MaterialPageRoute(builder: (_) => HomePage(homeStay: home,));
     case RouteName.ListRoomPage:
     return MaterialPageRoute(builder: (_) => ListRoomPage());
     case RouteName.RoomDetailPage:

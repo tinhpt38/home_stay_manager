@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
+import 'package:home_stay_project/ui/common/app_text_input_widget.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
-import 'package:home_stay_project/ui/common/text_input_widget.dart';
 import 'package:home_stay_project/ui/modular/authentication/auth_route.dart';
 import 'package:home_stay_project/ui/modular/authentication/pages_model/login_page_model.dart';
-
+import 'package:keyboard_avoider/keyboard_avoider.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -21,15 +22,16 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController _userCotler = TextEditingController();
 
-  double _width = 0;
   Alignment _alignment = Alignment.topCenter;
+
+  ScrollController _controller = ScrollController();
 
   @override
   void initState() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_){
       setState(() {
-        _width = MediaQuery.of(context).size.width;
         _alignment = Alignment.bottomCenter;
       });
     });
@@ -38,12 +40,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return BaseWidget<LoginPageModel>(
       model: LoginPageModel(),
       builder: (context, model, child){
         return Scaffold(
           resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomInset: false,
           body: Container(
             child: Column(
               children: <Widget>[
@@ -67,49 +69,40 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: Container(
-                    child: SingleChildScrollView(
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    padding: EdgeInsets.symmetric(vertical: 32),
+                    child: KeyboardAvoider(
+                      autoScroll: true,
+                      child: ListView(
+                        physics: BouncingScrollPhysics(),
+                          controller: _controller,
                           children: <Widget>[
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: 24),
-                              child: TextInput(
+                              child: AppInputWidget(
                                 label: "",
                                 hinText: "User Name",
-                                obscureText: false,
                                 cotller: _userCotler,
                               )
                             ),
                              Container(
                               margin: EdgeInsets.symmetric(horizontal: 24),
-                              child: TextInput(
+                              child: AppInputWidget(
                                 label: "",
                                 hinText: "Bussiness Email",
-                                obscureText: false,
                                 cotller:_emailCotler,
                               )
                             ),
                             Container(
                               margin: EdgeInsets.symmetric(horizontal: 24),
-                              child: TextInput(
+                              child: AppInputWidget(
                                 label: "",
                                 hinText: "Password",
                                 obscureText: true,
                                 cotller: _passCotler,
                               )
                             ),
-                            AnimatedContainer(
-                              margin: EdgeInsets.symmetric(horizontal: 24,vertical: 24),
-                              duration: Duration(seconds: 2),
-                              decoration: BoxDecoration(
-                                color: AppColor.lineColor,
-                                borderRadius: BorderRadius.all(Radius.circular(45))
-                              ),
-                              width: _width,
-                              height: 5,
-                            )
                           ],
                       ),
                     ),
@@ -131,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           backgroundColor: AppColor.primaryColor,
                           onClick: (){
-                            AuthenticationRoute.openHomePage(context);
+                            AuthenticationRoute.openHomePage(context,null);
                           },
                         ),
                          FullWidthButton(

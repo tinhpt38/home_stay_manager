@@ -1,3 +1,4 @@
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 
@@ -5,8 +6,9 @@ class InfoWidget extends StatefulWidget {
   
   final String name;
   final String profile;
+  final String avatar;
 
-  InfoWidget({this.name, this.profile}):assert(name != null),assert(profile !=null);
+  InfoWidget({this.name, this.profile, this.avatar = "https://hmp.me/csh4"}):assert(name != null),assert(profile !=null);
 
   @override
   _InfoWidgetState createState() => _InfoWidgetState();
@@ -33,23 +35,22 @@ class _InfoWidgetState extends State<InfoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return AnimatedOpacity(
       opacity: _opacity,
       duration: Duration(seconds: 3),
       child: Column(
         children: <Widget>[
           AnimatedContainer(
+            width: size.width * (1/4),
+            height: size.width * (1/4),
             duration: Duration(seconds: 2),
             padding: EdgeInsets.all(_padding),
             decoration: BoxDecoration(
               color: AppColor.borderColor,
               borderRadius: BorderRadius.all(_radius),
             ),
-            child: Icon(
-              Icons.people,
-              color: Colors.white,
-              size: 48,
-            ),
+            child: Image.network(widget.avatar),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 8),
