@@ -31,12 +31,13 @@ Route route(RouteSettings settings){
     return MaterialPageRoute(builder: (_) => ResgisterPage(role: role));
     case RouteName.AdminSetupPage:
     Staff staff = settings.arguments as Staff;
-    return MaterialPageRoute(builder: (_) => AdminSetupPage(staff: staff,));
+    return MaterialPageRoute(builder: (_) => AdminSetupPage(staff: staff));
     case RouteName.HomePage:
     Homestay home = settings.arguments as Homestay;
-    return MaterialPageRoute(builder: (_) => HomePage(homeStay: home,));
+    return MaterialPageRoute(builder: (_) => HomePage(homeStay: home));
     case RouteName.ListRoomPage:
-    return MaterialPageRoute(builder: (_) => ListRoomPage());
+    Homestay home = settings.arguments as Homestay;
+    return MaterialPageRoute(builder: (_) => ListRoomPage(homestay: home));
     case RouteName.RoomDetailPage:
     return MaterialPageRoute(builder: (_) => RoomDetailPage());
     case RouteName.CheckInPage:

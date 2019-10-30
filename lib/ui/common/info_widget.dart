@@ -27,7 +27,7 @@ class _InfoWidgetState extends State<InfoWidget> {
       setState(() {
         _opacity = 1;
         _radius = Radius.circular(90);
-        _padding = 32;
+        _padding = 12;
       });
     });
   }

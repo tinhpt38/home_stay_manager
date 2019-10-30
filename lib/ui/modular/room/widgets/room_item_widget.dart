@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:home_stay_project/core/model/room.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 
 
 class RoomItem extends StatefulWidget {
 
+  Room room;
+
   final Function(String) onRoomClick;
   
-  RoomItem({this.onRoomClick});
+  RoomItem({this.onRoomClick, this.room});
 
   @override
   _RoomItemState createState() => _RoomItemState();
@@ -41,14 +44,14 @@ class _RoomItemState extends State<RoomItem> {
         ),
         child: ListTile(
           onTap: (){
-            widget.onRoomClick("Room 1");
+            widget.onRoomClick(widget.room.title);
           },
           leading: Container(
             width: size.width * (1/20),
             height: size.width * (1/20),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.red
+              color: getColorFromSate(widget.room.state)
             ),
           ),
           trailing: Container(
@@ -58,7 +61,7 @@ class _RoomItemState extends State<RoomItem> {
             ),
           ),
           title: Text(
-            "Room 1",
+            widget.room.title,
             style: TextStyle(
             color: AppColor.primaryColor,
             fontSize: 18,
@@ -66,7 +69,7 @@ class _RoomItemState extends State<RoomItem> {
             ),
           ),
           subtitle: Text(
-            "Busy",
+            widget.room.state.toString().split(".")[1],
             style: TextStyle(
               fontSize: 14,
               color: AppColor.primaryColor,
@@ -75,5 +78,17 @@ class _RoomItemState extends State<RoomItem> {
         )
       ),
     );
+  }
+
+  Color getColorFromSate(RoomState state){
+    if(state == RoomState.clean){
+      return Colors.green;
+    }
+    if( state == RoomState.busy){
+      return Colors.red;
+    }
+    if (state == RoomState.watting){
+      return Colors.orange;
+    }
   }
 }

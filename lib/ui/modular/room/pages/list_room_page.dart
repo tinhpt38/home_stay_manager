@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:home_stay_project/core/model/homestay.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
-import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/modular/home/home_route.dart';
 import 'package:home_stay_project/ui/modular/room/pages_model/list_room_page_model.dart';
@@ -9,14 +9,16 @@ import 'package:home_stay_project/ui/modular/room/widgets/room_item_widget.dart'
 
 
 class ListRoomPage extends StatefulWidget {
+  
+  Homestay homestay;
 
+  ListRoomPage({this.homestay});
+  
   @override
   _ListRoomPageState createState() => _ListRoomPageState();
 }
 
 class _ListRoomPageState extends State<ListRoomPage> {
-  List<String> rooms = List.generate(12, (i) => "Room {i}");
-
   Alignment _alignment  = Alignment.bottomCenter;
   
 
@@ -33,8 +35,8 @@ class _ListRoomPageState extends State<ListRoomPage> {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<ListRoomPageModel>(
-      model: ListRoomPageModel(),
-      builder: (context, modle, child) => Scaffold(
+      model: ListRoomPageModel(widget.homestay),
+      builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
@@ -71,7 +73,7 @@ class _ListRoomPageState extends State<ListRoomPage> {
                       Container(
                         margin: EdgeInsets.only(left: 32),
                         child: Text(
-                          "List Room",
+                          model.home.name,
                           style: TextStyle(
                             color: AppColor.primaryColor,
                             fontWeight: FontWeight.bold,
@@ -88,10 +90,12 @@ class _ListRoomPageState extends State<ListRoomPage> {
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 24),
                   child: ListView.builder(
-                    itemCount: rooms.length,
+                    physics: BouncingScrollPhysics(),
+                    itemCount: model.home.roomNumber,
                     itemBuilder: (context,index){
                       return Container(
                         child: RoomItem(
+                          room: model.home.rooms[index],
                           onRoomClick: (title){
                             RoomRoute.openRoomDetail(context);
                           },
