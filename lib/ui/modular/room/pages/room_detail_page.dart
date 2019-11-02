@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
-import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/common/app_style.dart';
+import 'package:home_stay_project/ui/common/app_text_input_widget.dart';
 import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 import 'package:home_stay_project/ui/modular/room/pages_model/room_detail_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_detail_item_widget.dart';
+import 'package:home_stay_project/core/model/room.dart';
 
 class RoomDetailPage extends StatelessWidget {
+  final Room room;
+  RoomDetailPage({this.room});
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   TextEditingController _historyCotler = TextEditingController();
 
+  List<dynamic> widgetSample = List.generate(20, (i){
+    return "input $i";
+  });
 
   @override
   Widget build(BuildContext context) {
+    widgetSample.insert(widgetSample.length, "Button 54");
     return BaseWidget<RoomDetailPageModel>(
       model: RoomDetailPageModel(),
       builder: (context, model, chil){
@@ -22,7 +29,7 @@ class RoomDetailPage extends StatelessWidget {
           key: _scaffoldKey,
           appBar: AppBar(
             title: Text(
-              "Room 1".toUpperCase(),
+              "title",
               style: AppStyle.primaryNavigator,
             ),
             leading: FlatButton(
@@ -87,13 +94,20 @@ class RoomDetailPage extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: ListView.builder(
-              itemCount: 10,
+              itemCount: widgetSample.length,
               itemBuilder: (context, index){
-                return RoomDetailItem(
-                  onClick: (){
-                    RoomRoute.openCheckOutPage(context);
-                  },
-                );
+                if(widgetSample[index].toString().toLowerCase() == "Button".toLowerCase()){
+                  return Text(
+                    "button"
+                  );
+                }else{
+                  return Text("input");
+                }
+                // return RoomDetailItem(
+                //   onClick: (){
+                //     RoomRoute.openCheckOutPage(context);
+                //   },
+                // );
               },
             ),
                 ),

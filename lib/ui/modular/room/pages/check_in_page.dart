@@ -8,6 +8,7 @@ import 'package:home_stay_project/ui/common/full_width_button_widget.dart';
 import 'package:home_stay_project/ui/modular/room/pages_model/checkin_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/ui/modular/room/pages_model/checkin_page_model.dart';
+import 'package:keyboard_avoider/keyboard_avoider.dart';
 class CheckInPage extends StatelessWidget {
   
   TextEditingController _fullNameCotller = TextEditingController();
@@ -74,72 +75,77 @@ class CheckInPage extends StatelessWidget {
                 flex: 1,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 26),
-                  child: ListView(
-                    children: <Widget>[
-                      AppInputWidget(
-                        cotller: _fullNameCotller,
-                        label: "Full Name",
-                        hinText: "Join Doe",
-                        obscureText: false,
-                      ),
-                      AppInputWidget(
-                        cotller: _idColler,
-                        label: "ID",
-                        hinText: "235945784",
-                        obscureText: false,
-                      ),
+                  child: KeyboardAvoider(
+                    autoScroll: true,
+                    child: ListView(
+                      controller: ScrollController(),
+                      physics: BouncingScrollPhysics(),
+                      children: <Widget>[
                         AppInputWidget(
-                        cotller: _phoneColler,
-                        label: "Phone Number",
-                        hinText: "0352974899",
-                        obscureText: false,
-                      ),
-                        AppInputWidget(
-                        cotller: _dateStayColler,
-                        label: "Date Stay",
-                        hinText: "29/10/2019",
-                        obscureText: false,
-                      ),
-                        AppInputWidget(
-                        cotller: _dateLeaveColler,
-                        label: "Date Leave",
-                        hinText: "30/10/2019",
-                        obscureText: false,
-                      ),
-                        AppInputWidget(
-                        cotller: _roomColler,
-                        label: "Room",
-                        hinText: "Room 1",
-                        obscureText: false,
-                      ),
-                        AppInputWidget(
-                        cotller: _numberOfStayColler,
-                        label: "Number of Stay",
-                        hinText: "4",
-                        obscureText: false,
-                      ),
-                        AppInputWidget(
-                        cotller: _priceColler,
-                        label: "Price",
-                        hinText: "3.000.000.VND",
-                        obscureText: false,
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 32,horizontal: 24),
-                        child: FullWidthButton(
-                        title: "Continue",
-                        titleStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold
+                          cotller: _fullNameCotller,
+                          label: "Full Name",
+                          hinText: "Join Doe",
+                          obscureText: false,
                         ),
-                        backgroundColor: AppColor.primaryColor,
-                        onClick: (){
+                        AppInputWidget(
+                          cotller: _idColler,
+                          label: "ID",
+                          hinText: "235945784",
+                          obscureText: false,
+                        ),
+                          AppInputWidget(
+                          cotller: _phoneColler,
+                          label: "Phone Number",
+                          hinText: "0352974899",
+                          obscureText: false,
+                        ),
+                          AppInputWidget(
+                          cotller: _dateStayColler,
+                          label: "Date Stay",
+                          hinText: "29/10/2019",
+                          obscureText: false,
+                        ),
+                          AppInputWidget(
+                          cotller: _dateLeaveColler,
+                          label: "Date Leave",
+                          hinText: "30/10/2019",
+                          obscureText: false,
+                        ),
+                          AppInputWidget(
+                          cotller: _roomColler,
+                          label: "Room",
+                          hinText: "Room 1",
+                          obscureText: false,
+                        ),
+                          AppInputWidget(
+                          cotller: _numberOfStayColler,
+                          label: "Number of Stay",
+                          hinText: "4",
+                          obscureText: false,
+                        ),
+                          AppInputWidget(
+                          cotller: _priceColler,
+                          label: "Price",
+                          hinText: "3.000.000.VND",
+                          obscureText: false,
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 32,horizontal: 24),
+                          child: FullWidthButton(
+                          title: "Continue",
+                          titleStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold
+                          ),
+                          backgroundColor: AppColor.primaryColor,
+                          onClick: (){
 
-                        },
+                          },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

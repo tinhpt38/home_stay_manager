@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:home_stay_project/core/model/detail.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_dialog.dart';
 
 
 class RoomDetailItem extends StatelessWidget {
   final Function onClick;
+  final Detail detail;
 
-  RoomDetailItem({this.onClick});
+  RoomDetailItem({this.onClick, this.detail});
 
   @override
   Widget build(BuildContext context) {
