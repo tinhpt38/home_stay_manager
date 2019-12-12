@@ -97,7 +97,7 @@ class _ListRoomPageState extends State<ListRoomPage> {
                         child: RoomItem(
                           room: model.home.rooms[index],
                           onRoomClick: (title){
-                            RoomRoute.openRoomDetail(context);
+                            RoomRoute.openRoomDetail(context, model.home.rooms[index]);
                           },
                         ),
                       );
