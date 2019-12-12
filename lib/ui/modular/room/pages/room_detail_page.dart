@@ -15,7 +15,7 @@ class RoomDetailPage extends StatelessWidget {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   TextEditingController _historyCotler = TextEditingController();
 
-  List<dynamic> widgetSample = List.generate(20, (i){
+  List<dynamic> widgetSample = List.generate(20, (i) {
     return "input $i";
   });
 
@@ -24,7 +24,7 @@ class RoomDetailPage extends StatelessWidget {
     widgetSample.insert(widgetSample.length, "Button 54");
     return BaseWidget<RoomDetailPageModel>(
       model: RoomDetailPageModel(),
-      builder: (context, model, chil){
+      builder: (context, model, chil) {
         return Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
@@ -33,7 +33,7 @@ class RoomDetailPage extends StatelessWidget {
               style: AppStyle.primaryNavigator,
             ),
             leading: FlatButton(
-              onPressed: (){
+              onPressed: () {
                 RoomRoute.goBack(context);
               },
               child: Icon(
@@ -43,7 +43,7 @@ class RoomDetailPage extends StatelessWidget {
             ),
             actions: <Widget>[
               FlatButton(
-                onPressed: (){
+                onPressed: () {
                   _scaffoldKey.currentState.openDrawer();
                 },
                 child: Icon(
@@ -57,24 +57,22 @@ class RoomDetailPage extends StatelessWidget {
             centerTitle: true,
           ),
           body: Container(
-            child: Column(
-              children: <Widget>[
-                Container(
+              child: Column(
+            children: <Widget>[
+              Container(
                   alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(vertical: 8,horizontal: 8),
-                  margin: EdgeInsets.only(top: 8,left: 24,right: 24),
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                  margin: EdgeInsets.only(top: 8, left: 24, right: 24),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: AppColor.secondaryColor,
-                    borderRadius: BorderRadius.all(Radius.circular(8))
-                  ),
+                      color: AppColor.secondaryColor,
+                      borderRadius: BorderRadius.all(Radius.circular(8))),
                   child: TextField(
                     controller: _historyCotler,
                     style: TextStyle(
-                         color: AppColor.primaryColor,
+                        color: AppColor.primaryColor,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold
-                      ),
+                        fontWeight: FontWeight.bold),
                     decoration: InputDecoration(
                       icon: SizedBox(
                         width: 28,
@@ -83,37 +81,33 @@ class RoomDetailPage extends StatelessWidget {
                       ),
                       hintText: "History",
                       hintStyle: TextStyle(
-                        color: AppColor.primaryColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
-                      ),
+                          color: AppColor.primaryColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                       border: InputBorder.none,
                     ),
-                  )
+                  )),
+              Expanded(
+                flex: 1,
+                child: ListView.builder(
+                  itemCount: widgetSample.length,
+                  itemBuilder: (context, index) {
+                    if (widgetSample[index].toString().toLowerCase() ==
+                        "Button".toLowerCase()) {
+                      return Text("button");
+                    } else {
+                      return Text("input");
+                    }
+                    // return RoomDetailItem(
+                    //   onClick: (){
+                    //     RoomRoute.openCheckOutPage(context);
+                    //   },
+                    // );
+                  },
                 ),
-                Expanded(
-                  flex: 1,
-                  child: ListView.builder(
-              itemCount: widgetSample.length,
-              itemBuilder: (context, index){
-                if(widgetSample[index].toString().toLowerCase() == "Button".toLowerCase()){
-                  return Text(
-                    "button"
-                  );
-                }else{
-                  return Text("input");
-                }
-                // return RoomDetailItem(
-                //   onClick: (){
-                //     RoomRoute.openCheckOutPage(context);
-                //   },
-                // );
-              },
-            ),
-                ),
-              ],
-            )
-          ),
+              ),
+            ],
+          )),
           drawer: Drawer(
             child: Container(
               color: AppColor.primaryColor,
@@ -124,37 +118,32 @@ class RoomDetailPage extends StatelessWidget {
                       color: AppColor.secondaryColor,
                     ),
                     child: Container(
-                      child: ListTile(
-                        leading: Container(
-                            padding: EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: AppColor.primaryColor,
-                              shape: BoxShape.circle
-                            ),
-                            child: Icon(
-                              Icons.people,
-                              color: Colors.white,
-                            ),
-                          ),
-                          title: Text(
-                            "Join Doe",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: AppColor.primaryColor,
-                              fontWeight: FontWeight.bold
-                            ),
-                          ),
-                          subtitle: Text(
-                            "Your Sologan",
-                            style: TextStyle(
-                              color: AppColor.primaryColor
-                            ),
-                          ),
-                      )
-                    ),
+                        child: ListTile(
+                      leading: Container(
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                            color: AppColor.primaryColor,
+                            shape: BoxShape.circle),
+                        child: Icon(
+                          Icons.people,
+                          color: Colors.white,
+                        ),
+                      ),
+                      title: Text(
+                        "Join Doe",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: AppColor.primaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        "Your Sologan",
+                        style: TextStyle(color: AppColor.primaryColor),
+                      ),
+                    )),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 16,horizontal: 8),
+                    margin: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                     child: FullWidthButton(
                       title: "Check in",
                       titleStyle: TextStyle(
@@ -163,13 +152,13 @@ class RoomDetailPage extends StatelessWidget {
                         color: AppColor.primaryColor,
                       ),
                       backgroundColor: AppColor.secondaryColor,
-                      onClick: (){
-                          RoomRoute.openCheckInPage(context);
+                      onClick: () {
+                        RoomRoute.openCheckInPage(context);
                       },
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 16,horizontal: 8),
+                    margin: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                     child: FullWidthButton(
                       title: "Clear Room",
                       titleStyle: TextStyle(
@@ -178,9 +167,7 @@ class RoomDetailPage extends StatelessWidget {
                         color: AppColor.primaryColor,
                       ),
                       backgroundColor: AppColor.secondaryColor,
-                      onClick: (){
-                        
-                      },
+                      onClick: () {},
                     ),
                   ),
                 ],
