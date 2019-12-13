@@ -7,6 +7,7 @@ import 'package:home_stay_project/ui/modular/room/pages_model/room_detail_page_m
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/core/model/room.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_detail_item_widget.dart';
+import 'package:provider/provider.dart';
 
 class RoomDetailPage extends StatelessWidget {
   final Room room;
@@ -17,13 +18,13 @@ class RoomDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<RoomDetailPageModel>(
-      model: RoomDetailPageModel(),
+      model: RoomDetailPageModel(service: Provider.of(context),room: room),
       builder: (context, model, chil) {
         return Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
             title: Text(
-              "title",
+              room.title,
               style: AppStyle.primaryNavigator,
             ),
             leading: FlatButton(
@@ -106,14 +107,14 @@ class RoomDetailPage extends StatelessWidget {
                         ),
                       ),
                       title: Text(
-                        "Join Doe",
+                        model.home.name,
                         style: TextStyle(
                             fontSize: 18,
                             color: AppColor.primaryColor,
                             fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
-                        "Your Sologan",
+                        model.home.sologan,
                         style: TextStyle(color: AppColor.primaryColor),
                       ),
                     )),
@@ -171,6 +172,7 @@ class RoomDetailPage extends StatelessWidget {
       itemCount: room.details.length,
       itemBuilder: (context, index) {
         return RoomDetailItem(
+          detail: room.details[index],
           onClick: () {
             RoomRoute.openCheckOutPage(context);
           },

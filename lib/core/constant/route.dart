@@ -34,8 +34,7 @@ Route route(RouteSettings settings){
     Staff staff = settings.arguments as Staff;
     return MaterialPageRoute(builder: (_) => AdminSetupPage(staff: staff));
     case RouteName.HomePage:
-    Homestay home = settings.arguments as Homestay;
-    return MaterialPageRoute(builder: (_) => HomePage(homeStay: home));
+    return MaterialPageRoute(builder: (_) => HomePage());
     case RouteName.ListRoomPage:
     Homestay home = settings.arguments as Homestay;
     return MaterialPageRoute(builder: (_) => ListRoomPage(homestay: home));

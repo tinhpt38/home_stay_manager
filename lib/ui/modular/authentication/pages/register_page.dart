@@ -141,7 +141,7 @@ class ResgisterPage extends StatelessWidget {
                                 role,
                                 _passCotller.text.trim()));
                           }else{
-                            AuthenticationRoute.openHomePage(context,null);
+                            AuthenticationRoute.openHomePage(context);
                           }
                       }
                     },

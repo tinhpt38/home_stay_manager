@@ -16,8 +16,8 @@ class AuthenticationRoute {
    Navigator.pushNamed(context, RouteName.ResigterPage,arguments: role);
  }
 
- static void openHomePage(BuildContext context, Homestay homestay){
-   Navigator.pushReplacementNamed(context, RouteName.HomePage, arguments: homestay);
+ static void openHomePage(BuildContext context){
+   Navigator.pushReplacementNamed(context, RouteName.HomePage);
  }
  
  static void openAdminSetupRegisget(BuildContext context, Staff staff){

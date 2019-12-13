@@ -124,15 +124,16 @@ class AdminSetupPage extends StatelessWidget {
                   child: AuthAction(
                     onContinueClick: (){
                       if(fillInField(context)){
-                        AuthenticationRoute.openHomePage(
-                          context,
                           model.createNewHomeStay(
                             _nameCotller.text.trim(), 
                             _sologanCotller.text.trim(),
                             null, 
                             int.parse(_numberRoomColler.text),
                             _phoneCotller.text,
-                            staff.email));
+                            staff.email);
+                        AuthenticationRoute.openHomePage(
+                          context,
+                        );
                       }
                     },
                   ),

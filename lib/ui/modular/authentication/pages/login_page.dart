@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           backgroundColor: AppColor.primaryColor,
                           onClick: (){
-                            AuthenticationRoute.openHomePage(context,null);
+                            AuthenticationRoute.openHomePage(context);
                           },
                         ),
                          FullWidthButton(

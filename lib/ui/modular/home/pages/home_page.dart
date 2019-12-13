@@ -5,16 +5,15 @@ import 'package:home_stay_project/ui/common/info_widget.dart';
 import 'package:home_stay_project/ui/modular/home/home_route.dart';
 import 'package:home_stay_project/ui/modular/home/pages_model/home_page_model.dart';
 import 'package:home_stay_project/ui/modular/home/widget/home_square_button.dart';
+import 'package:provider/provider.dart';
 
 
 class HomePage extends StatelessWidget {
-  final Homestay homeStay;
-  const HomePage({this.homeStay, key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return BaseWidget<HomePageModel>(
-      model: HomePageModel(homeStay),
+      model: HomePageModel(Provider.of(context)),
       builder: (context, model, child) => Scaffold(
         body: SafeArea(
         child: Container(
