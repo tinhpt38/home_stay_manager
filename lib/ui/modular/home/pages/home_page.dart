@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                             title: "List Room",
                             margin: EdgeInsets.only(right: 16,left: 8,top: 8,bottom: 8),
                             onClick: (){
-                              HomeRoute.openListRoomPage(context, model.home);
+                              HomeRoute.openListRoomPage(context);
                             },
                           )
                         ],

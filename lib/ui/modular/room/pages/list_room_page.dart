@@ -6,13 +6,10 @@ import 'package:home_stay_project/ui/modular/home/home_route.dart';
 import 'package:home_stay_project/ui/modular/room/pages_model/list_room_page_model.dart';
 import 'package:home_stay_project/ui/modular/room/room_route.dart';
 import 'package:home_stay_project/ui/modular/room/widgets/room_item_widget.dart';
+import 'package:provider/provider.dart';
 
 
 class ListRoomPage extends StatefulWidget {
-  
-  Homestay homestay;
-
-  ListRoomPage({this.homestay});
   
   @override
   _ListRoomPageState createState() => _ListRoomPageState();
@@ -35,7 +32,7 @@ class _ListRoomPageState extends State<ListRoomPage> {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<ListRoomPageModel>(
-      model: ListRoomPageModel(widget.homestay),
+      model: ListRoomPageModel(service: Provider.of(context)),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,

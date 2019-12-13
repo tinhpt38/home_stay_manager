@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:home_stay_project/core/constant/route_name.dart';
-import 'package:home_stay_project/core/model/homestay.dart';
 import 'package:home_stay_project/core/model/room.dart';
 import 'package:home_stay_project/core/model/staff.dart';
 import 'package:home_stay_project/ui/modular/authentication/pages/admin_setup.dart';
@@ -36,8 +35,7 @@ Route route(RouteSettings settings){
     case RouteName.HomePage:
     return MaterialPageRoute(builder: (_) => HomePage());
     case RouteName.ListRoomPage:
-    Homestay home = settings.arguments as Homestay;
-    return MaterialPageRoute(builder: (_) => ListRoomPage(homestay: home));
+    return MaterialPageRoute(builder: (_) => ListRoomPage());
     case RouteName.RoomDetailPage:
     Room room = settings.arguments as Room;
     return MaterialPageRoute(builder: (_) => RoomDetailPage(room: room,));

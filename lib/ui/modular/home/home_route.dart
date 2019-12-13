@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:home_stay_project/core/constant/route_name.dart';
-import 'package:home_stay_project/core/model/homestay.dart';
 
 class HomeRoute{
   
@@ -12,8 +11,8 @@ class HomeRoute{
     Navigator.pop(context);
   }
 
-  static void openListRoomPage(BuildContext context, Homestay homestay){
-    Navigator.pushNamed(context, RouteName.ListRoomPage, arguments: homestay);
+  static void openListRoomPage(BuildContext context){
+    Navigator.pushNamed(context, RouteName.ListRoomPage);
   }
   static void openSettingPage(BuildContext context){
     Navigator.pushNamed(context, RouteName.SettingPage);

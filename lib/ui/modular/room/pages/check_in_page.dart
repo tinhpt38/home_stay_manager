@@ -95,6 +95,19 @@ class _CheckInPageState extends State<CheckInPage> {
     );
   }
 
+  checkDate(){
+    try{
+      DateTime inAt = DateTime.parse(_dateStayColler.text);
+      DateTime outAt = DateTime.parse(_dateLeaveColler.text);
+
+      if(outAt <inAt){
+        
+      }
+    } on Exception catch(e){
+
+    }
+  }
+
   createCustomer() {
     return Customer(
       name: _fullNameCotller.text.trim(),
@@ -178,6 +191,7 @@ class _CheckInPageState extends State<CheckInPage> {
                           label: "ID",
                           hinText: "235945784",
                           obscureText: false,
+                          inputType: TextInputType.number,
                         ),
                         AppInputWidget(
                           cotller: _phoneColler,
@@ -190,13 +204,13 @@ class _CheckInPageState extends State<CheckInPage> {
                         AppInputWidget(
                           cotller: _dateStayColler,
                           label: "Date Stay",
-                          hinText: "29/10/2019",
+                          hinText: "29-10-2019",
                           obscureText: false,
                         ),
                         AppInputWidget(
                           cotller: _dateLeaveColler,
                           label: "Date Leave",
-                          hinText: "30/10/2019",
+                          hinText: "30-10-2019",
                           obscureText: false,
                         ),
                         AppInputWidget(
@@ -218,6 +232,7 @@ class _CheckInPageState extends State<CheckInPage> {
                           label: "Price",
                           hinText: "3.000.000.VND",
                           obscureText: false,
+                          inputType: TextInputType.number,
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(
