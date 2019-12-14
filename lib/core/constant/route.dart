@@ -42,9 +42,11 @@ Route route(RouteSettings settings){
     case RouteName.CheckInPage:
     return MaterialPageRoute(builder: (_) => CheckInPage());
     case RouteName.CheckOutPage:
-    return MaterialPageRoute(builder: (_) => CheckOutPage());
+    var data = settings.arguments;
+    return MaterialPageRoute(builder: (_) => CheckOutPage(data: data,));
     case RouteName.PaymentPage:
-    return MaterialPageRoute(builder: (_) => PaymentPage());
+    var data = settings.arguments;
+    return MaterialPageRoute(builder: (_) => PaymentPage(data: data));
     case RouteName.SettingPage:
     return MaterialPageRoute(builder: (_) => SettingPage());
     case RouteName.AboutUsPage:

@@ -17,15 +17,27 @@ class RoomRoute{
     Navigator.pushNamed(context, RouteName.CheckInPage);
   }
 
-  static void openCheckOutPage(BuildContext context){
-    Navigator.pushNamed(context, RouteName.CheckOutPage);
+  static void openCheckOutPage(BuildContext context,Room room, Detail detail){
+    var data = {
+      "detail":detail,
+      "room":room
+    };
+    Navigator.pushNamed(context, RouteName.CheckOutPage, arguments: data);
   }
   
-  static void openPaymentPage(BuildContext context){
-    Navigator.pushNamed(context, RouteName.PaymentPage);
+  static void openPaymentPage(BuildContext context, Detail detail, int indexRoom){
+     var data = {
+      "detail":detail,
+      "indexRoom":indexRoom
+    };
+    Navigator.pushNamed(context, RouteName.PaymentPage, arguments: data);
   }
 
   static void openRatingPage(BuildContext context){
     Navigator.pushNamed(context, RouteName.RatingPage);
+  }
+
+  static void openListRoom(BuildContext context){
+    Navigator.pushReplacementNamed(context, RouteName.ListRoomPage);
   }
 }

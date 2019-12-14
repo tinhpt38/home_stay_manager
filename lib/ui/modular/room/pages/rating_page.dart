@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:home_stay_project/core/constant/route_name.dart';
 import 'package:home_stay_project/ui/base/base_widget.dart';
 import 'package:home_stay_project/ui/base/null_page_model.dart';
 import 'package:home_stay_project/ui/common/app_colors.dart';
@@ -133,7 +134,7 @@ class _RatingPageState extends State<RatingPage> with TickerProviderStateMixin{
                   ),
                   backgroundColor: AppColor.primaryColor,
                   onClick: (){
-
+                      Navigator.pushReplacementNamed(context, RouteName.HomePage);
                   },
                 ),
               ),

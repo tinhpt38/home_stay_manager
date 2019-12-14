@@ -16,7 +16,12 @@ class Detail{
   Customer customer;
   int numberPeople;
   List<Price> prices;
+  bool isCheckOut = false;
   Detail({this.customer, this.numberPeople, this.prices});
+  
+  setIsCheckOut(bool value){
+    isCheckOut = value;
+  }
 }
 
 class Price{

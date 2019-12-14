@@ -55,7 +55,7 @@ class _CheckInPageState extends State<CheckInPage> {
 
   valideField() {
     cotlers.forEach((cotler) {
-      if (cotler.text == "") {
+      if (cotler.text == "" || cotler.text == null) {
         return false;
       }
     });
@@ -70,7 +70,9 @@ class _CheckInPageState extends State<CheckInPage> {
         int index = int.parse(_roomColler.text);
         _model.getRoom(index);
         Room room = _model.room;
-        room.details.add(createDetail(context));
+        Detail detail = createDetail(context);
+        room.details.add(detail);
+        _model.setDetail(detail, index);
         RoomRoute.openRoomDetail(context, room);
       }on Exception catch (e){
         showErr(context, "Phòng bạn nhập không hợp lệ!");
@@ -90,6 +92,7 @@ class _CheckInPageState extends State<CheckInPage> {
   createDetail(BuildContext context) {
     Price price = createPrice(context);
     return Detail(
+      numberPeople: int.parse(_numberOfStayColler.text),
       customer: createCustomer(),
       prices: [price],
     );
@@ -100,9 +103,9 @@ class _CheckInPageState extends State<CheckInPage> {
       DateTime inAt = DateTime.parse(_dateStayColler.text);
       DateTime outAt = DateTime.parse(_dateLeaveColler.text);
 
-      if(outAt <inAt){
+      // if(outAt <inAt){
         
-      }
+      // }
     } on Exception catch(e){
 
     }

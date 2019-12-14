@@ -28,6 +28,8 @@ dependencies:
   json_annotation: ^3.0.0
   keyboard_avoider: any
   cached_network_image: ^1.1.2+1
+  rxdart: ^0.23.1
+
 
 
 

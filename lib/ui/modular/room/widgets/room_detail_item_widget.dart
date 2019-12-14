@@ -9,8 +9,12 @@ class RoomDetailItem extends StatelessWidget {
 
   RoomDetailItem({this.onClick, this.detail});
 
+  Color _textColor = AppColor.primaryColor;
+
+
   @override
   Widget build(BuildContext context) {
+    _textColor = detail.isCheckOut?Colors.grey:AppColor.primaryColor;
     return Container(
       width: double.infinity,
           child: GestureDetector(
@@ -23,7 +27,7 @@ class RoomDetailItem extends StatelessWidget {
                       leading: Container(
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                            color: AppColor.primaryColor,
+                            color: _textColor,
                             shape: BoxShape.circle),
                         child: Icon(
                           Icons.people,
@@ -36,7 +40,7 @@ class RoomDetailItem extends StatelessWidget {
                             Text(
                               detail.customer.name,
                               style: TextStyle(
-                                  color: AppColor.primaryColor,
+                                  color: _textColor,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -45,7 +49,7 @@ class RoomDetailItem extends StatelessWidget {
                               child: Text(
                                 detail.customer.inAt,
                                 style: TextStyle(
-                                    color: AppColor.primaryColor, fontSize: 14),
+                                    color: _textColor, fontSize: 14),
                               ),
                             )
                           ],
@@ -68,7 +72,7 @@ class RoomDetailItem extends StatelessWidget {
                         child: Text(
                           detail.customer.info(),
                           style: TextStyle(
-                              color: AppColor.primaryColor, fontSize: 16),
+                              color: _textColor, fontSize: 16),
                         ),
                       ),
                       Container(

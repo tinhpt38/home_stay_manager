@@ -9,8 +9,9 @@ class AppInputWidget extends StatelessWidget {
   final String hinText;
   final TextEditingController cotller;
   TextInputType inputType;
+  bool isEnable = true;
 
-  AppInputWidget({this.label, this.obscureText = false, this.hinText = "", this.cotller, this.inputType = TextInputType.text});
+  AppInputWidget({this.label, this.obscureText = false, this.hinText = "", this.cotller, this.inputType = TextInputType.text, this.isEnable});
 
 
   @override
@@ -31,6 +32,7 @@ class AppInputWidget extends StatelessWidget {
             obscureText: obscureText,
             controller: cotller,
             keyboardType: inputType,
+            enabled: isEnable,
             decoration: InputDecoration(
                 hintText: hinText,
                 hintStyle: TextStyle(color: AppColor.primaryColor),

@@ -18,7 +18,7 @@ class RoomDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<RoomDetailPageModel>(
-      model: RoomDetailPageModel(service: Provider.of(context),room: room),
+      model: RoomDetailPageModel(service: Provider.of(context), room: room),
       builder: (context, model, chil) {
         return Scaffold(
           key: _scaffoldKey,
@@ -29,7 +29,7 @@ class RoomDetailPage extends StatelessWidget {
             ),
             leading: FlatButton(
               onPressed: () {
-                RoomRoute.goBack(context);
+                RoomRoute.openListRoom(context);
               },
               child: Icon(
                 Icons.arrow_back,
@@ -51,40 +51,45 @@ class RoomDetailPage extends StatelessWidget {
             elevation: 0.0,
             centerTitle: true,
           ),
-          body: Container(
-              child: Column(
-            children: <Widget>[
-              Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                  margin: EdgeInsets.only(top: 8, left: 24, right: 24),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: AppColor.secondaryColor,
-                      borderRadius: BorderRadius.all(Radius.circular(8))),
-                  child: TextField(
-                    controller: _historyCotler,
-                    style: TextStyle(
-                        color: AppColor.primaryColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                    decoration: InputDecoration(
-                      icon: SizedBox(
-                        width: 28,
-                        height: 28,
-                        child: Image.asset("assets/search.png"),
-                      ),
-                      hintText: "History",
-                      hintStyle: TextStyle(
+          body: WillPopScope(
+            onWillPop: () {
+              RoomRoute.openListRoom(context);
+            },
+            child: Container(
+                child: Column(
+              children: <Widget>[
+                Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    margin: EdgeInsets.only(top: 8, left: 24, right: 24),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: AppColor.secondaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                    child: TextField(
+                      controller: _historyCotler,
+                      style: TextStyle(
                           color: AppColor.primaryColor,
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
-                      border: InputBorder.none,
-                    ),
-                  )),
-              Expanded(flex: 1, child: buildBody()),
-            ],
-          )),
+                      decoration: InputDecoration(
+                        icon: SizedBox(
+                          width: 28,
+                          height: 28,
+                          child: Image.asset("assets/search.png"),
+                        ),
+                        hintText: "History",
+                        hintStyle: TextStyle(
+                            color: AppColor.primaryColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                        border: InputBorder.none,
+                      ),
+                    )),
+                Expanded(flex: 1, child: buildBody()),
+              ],
+            )),
+          ),
           drawer: Drawer(
             child: Container(
               color: AppColor.primaryColor,
@@ -156,8 +161,8 @@ class RoomDetailPage extends StatelessWidget {
     );
   }
 
-  Widget buildBody(){
-    return this.room.details == null? buildEmpty(): buildData();
+  Widget buildBody() {
+    return this.room.details == null ? buildEmpty() : buildData();
   }
 
   Widget buildEmpty() {
@@ -168,13 +173,17 @@ class RoomDetailPage extends StatelessWidget {
   }
 
   Widget buildData() {
+    List<Detail> temp = room.details;
+    temp = temp.reversed.toList();
     return ListView.builder(
-      itemCount: room.details.length,
+      itemCount: temp.length,
       itemBuilder: (context, index) {
         return RoomDetailItem(
-          detail: room.details[index],
+          detail: temp[index],
           onClick: () {
-            RoomRoute.openCheckOutPage(context);
+            if (!room.details[index].isCheckOut) {
+              RoomRoute.openCheckOutPage(context, room, room.details[index]);
+            }
           },
         );
       },

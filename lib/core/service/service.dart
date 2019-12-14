@@ -1,5 +1,3 @@
-
-
 import 'package:home_stay_project/core/model/homestay.dart';
 import 'package:home_stay_project/core/model/room.dart';
 import 'package:home_stay_project/core/model/staff.dart';
@@ -26,6 +24,25 @@ class Service{
       homestay.rooms[roomIndex].details = List();
     }
     homestay.rooms[roomIndex].details.add(detail);
+    List<Detail> details = fillterDetail(homestay.rooms[roomIndex].details);
+    homestay.rooms[roomIndex].details = details;
+  }
+
+  fillterDetail(List<Detail> details){
+    List<Detail> result = details.toSet().toList();
+     return result;
+  }
+
+  updateDetail(Detail detail, int roomIndex){
+    int detailIndex = this.homestay.rooms[roomIndex].details.indexOf(detail);
+    homestay.rooms[roomIndex].details[detailIndex] = detail;
+    List<Detail> details = fillterDetail(homestay.rooms[roomIndex].details);
+    homestay.rooms[roomIndex].details = details;
+  }
+
+  detailCheckOut(Detail detail, bool value,int roomIndex){
+    detail.setIsCheckOut(value);
+    updateDetail(detail, roomIndex);
   }
 
   setHome({ Homestay home}){
